@@ -34,21 +34,23 @@ export function Hero() {
         >
           {profile.avatar ? (
             <div className="relative">
-              <div
+              <motion.div
                 aria-hidden="true"
-                className="absolute -inset-2 rounded-full blur-xl"
+                className="absolute -inset-3 rounded-full blur-2xl"
                 style={{
                   background:
                     'linear-gradient(120deg, var(--accent), var(--accent-2))',
-                  opacity: 0.35,
+                  opacity: 0.4,
                 }}
+                animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.5, 0.35] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <div className="glass glass-strong relative h-28 w-28 overflow-hidden rounded-full p-1 sm:h-32 sm:w-32">
+              <div className="glass glass-strong relative h-32 w-32 overflow-hidden rounded-full p-1.5 sm:h-36 sm:w-36">
                 <img
                   src={profile.avatar}
                   alt={`Portrait of ${profile.name}`}
-                  width={128}
-                  height={128}
+                  width={144}
+                  height={144}
                   loading="eager"
                   decoding="async"
                   className="h-full w-full rounded-full object-cover"
@@ -57,7 +59,7 @@ export function Hero() {
             </div>
           ) : (
             <div
-              className="glass flex h-28 w-28 items-center justify-center rounded-full text-4xl font-bold sm:h-32 sm:w-32"
+              className="glass flex h-32 w-32 items-center justify-center rounded-full text-4xl font-bold sm:h-36 sm:w-36"
               style={{ color: 'var(--accent)' }}
             >
               {initials(profile.name)}
@@ -79,14 +81,24 @@ export function Hero() {
           {profile.role}
         </motion.span>
 
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          custom={2}
+          className="text-lg font-medium text-[var(--text-muted)] sm:text-xl"
+        >
+          Hi, I'm
+        </motion.p>
+
         <motion.h1
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           custom={2}
-          className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl"
+          className="mt-1 max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl"
         >
-          <span className="text-gradient">{profile.name}</span>
+          <span className="text-gradient">{profile.shortName}</span>
         </motion.h1>
 
         <motion.p
@@ -94,7 +106,7 @@ export function Hero() {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           custom={3}
-          className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg"
+          className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--text-muted)] sm:text-lg"
         >
           {profile.summary}
         </motion.p>
