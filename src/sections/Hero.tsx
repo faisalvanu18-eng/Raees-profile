@@ -33,16 +33,27 @@ export function Hero() {
           className="mb-7"
         >
           {profile.avatar ? (
-            <div className="glass h-28 w-28 overflow-hidden rounded-full p-1 sm:h-32 sm:w-32">
-              <img
-                src={profile.avatar}
-                alt={`Portrait of ${profile.name}`}
-                width={128}
-                height={128}
-                loading="eager"
-                decoding="async"
-                className="h-full w-full rounded-full object-cover"
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute -inset-2 rounded-full blur-xl"
+                style={{
+                  background:
+                    'linear-gradient(120deg, var(--accent), var(--accent-2))',
+                  opacity: 0.35,
+                }}
               />
+              <div className="glass glass-strong relative h-28 w-28 overflow-hidden rounded-full p-1 sm:h-32 sm:w-32">
+                <img
+                  src={profile.avatar}
+                  alt={`Portrait of ${profile.name}`}
+                  width={128}
+                  height={128}
+                  loading="eager"
+                  decoding="async"
+                  className="h-full w-full rounded-full object-cover"
+                />
+              </div>
             </div>
           ) : (
             <div

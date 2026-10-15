@@ -28,7 +28,7 @@ export function BottomTabBar({ active }: BottomTabBarProps) {
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ ...spring, delay: 0.3 }}
-        className="glass flex items-center gap-1 rounded-full p-1.5"
+        className="glass glass-strong flex items-center gap-1 rounded-full p-1.5"
       >
         {navItems.map((item) => {
           const isActive = active === item.id

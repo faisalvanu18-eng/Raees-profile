@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 export type Theme = 'light' | 'dark'
 
-const META_LIGHT = '#f2f2f7'
-const META_DARK = '#000000'
+const META_LIGHT = '#eef0f5'
+const META_DARK = '#050507'
 
 function getSystemTheme(): Theme {
   if (typeof window === 'undefined' || !window.matchMedia) return 'light'
