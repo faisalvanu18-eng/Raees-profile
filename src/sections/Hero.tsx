@@ -32,12 +32,26 @@ export function Hero() {
           custom={0}
           className="mb-7"
         >
-          <div
-            className="glass flex h-28 w-28 items-center justify-center rounded-full text-4xl font-bold sm:h-32 sm:w-32"
-            style={{ color: 'var(--accent)' }}
-          >
-            {initials(profile.name)}
-          </div>
+          {profile.avatar ? (
+            <div className="glass h-28 w-28 overflow-hidden rounded-full p-1 sm:h-32 sm:w-32">
+              <img
+                src={profile.avatar}
+                alt={`Portrait of ${profile.name}`}
+                width={128}
+                height={128}
+                loading="eager"
+                decoding="async"
+                className="h-full w-full rounded-full object-cover"
+              />
+            </div>
+          ) : (
+            <div
+              className="glass flex h-28 w-28 items-center justify-center rounded-full text-4xl font-bold sm:h-32 sm:w-32"
+              style={{ color: 'var(--accent)' }}
+            >
+              {initials(profile.name)}
+            </div>
+          )}
         </motion.div>
 
         <motion.span

@@ -9,12 +9,15 @@ export interface Profile {
   summary: string
   dob: string
   languages: string[]
+  /** Profile photo served from the public/ folder (set to '' to show initials). */
+  avatar: string
 }
 
 export const profile: Profile = {
   name: 'Raees Mohammad Ishaque Vanu',
   shortName: 'Raees Vanu',
   role: 'Accounts Assistant',
+  avatar: '/profile.jpg',
   phone: '+91 8698174743',
   phoneHref: '+918698174743',
   email: 'raeesvanu80781@gmail.com',
